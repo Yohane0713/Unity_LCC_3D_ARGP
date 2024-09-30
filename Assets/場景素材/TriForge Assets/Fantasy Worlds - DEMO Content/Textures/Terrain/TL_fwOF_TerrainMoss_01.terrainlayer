@@ -7,10 +7,10 @@ TerrainLayer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: TL_fwOF_TerrainMoss_01
-  m_DiffuseTexture: {fileID: 2800000, guid: 0ca5a618f829cfa49b84f942580a883d, type: 3}
+  m_DiffuseTexture: {fileID: 2800000, guid: 8c75ba30e5f76df4fb30725e4c9bf38a, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 18b0973e437c071448ce4f7e5e1b603b, type: 3}
   m_MaskMapTexture: {fileID: 2800000, guid: 2ff8d4ae973995647848916587b87dd9, type: 3}
-  m_TileSize: {x: 4, y: 4}
+  m_TileSize: {x: 10, y: 10}
   m_TileOffset: {x: 0, y: 0}
   m_Specular: {r: 0, g: 0, b: 0, a: 0}
   m_Metallic: 0
