@@ -52,7 +52,7 @@ namespace Mtaka
             {
                 attackCountCurrent++;
                 // 如果段數大於最大值 段數 = 1
-                if (attackCountCurrent >= attackCountMax) attackCountCurrent = 1;
+                if (attackCountCurrent > attackCountMax) attackCountCurrent = 1;
                 // 停止所有的協同程序
                 StopAllCoroutines();
                 StartCoroutine(AttackHandle());
