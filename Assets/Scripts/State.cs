@@ -9,26 +9,28 @@ namespace Mtaka
         protected string parAttack = "觸發攻擊";
         protected string parKick = "觸發踢擊";
         protected Transform player;
-        protected string playerName = "unitychan";
+        protected string playerName = "玩家_Unity醬";
         protected string stateName;
+        protected StateMachine stateMachine;
 
-        protected void Awake()
+        protected virtual void Awake()
         {
             ani = GetComponent<Animator>();
+            stateMachine = GetComponent<StateMachine>();
             player = GameObject.Find(playerName).transform;
         }
 
-        public void StateEnter()
+        public virtual void StateEnter()
         {
             LogSystem.Log($"進入{stateName}", "#3f3");
         }
 
-        public void StateExit()
+        public virtual void StateExit()
         {
             LogSystem.Log($"離開{stateName}", "#f33");
         }
 
-        public void StateUpdate()
+        public virtual void StateUpdate()
         {
             LogSystem.Log($"更新{stateName}", "#77f");
         }
