@@ -20,6 +20,12 @@ namespace Mtaka
         public override void StateEnter()
         {
             base.StateEnter();
+            // 目標座標指定為玩家座標
+            Vector3 target = transform.position;
+            // 目標Y軸指定為敵人Y軸
+            target.y = transform.position.y;
+            // 面向目標座標
+            transform.LookAt(target);
             ani.SetTrigger(parKick);
             ani.SetFloat(parMove, 0);
             StartCoroutine(ChangeToTrackState());
