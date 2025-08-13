@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Mtaka
 {
@@ -15,10 +16,18 @@ namespace Mtaka
         public State stateAttack1;
 
         private State stateCurrent;
+        private HpSystem hpSystem;
 
         private void Start()
         {
+            hpSystem = GetComponent<HpSystem>();
+            hpSystem.onDead += EnemyDead;
             ChangeState(stateDefault);
+        }
+
+        private void EnemyDead(object sender, EventArgs e)
+        {
+            ChangeState(null);
         }
 
         private void Update()
