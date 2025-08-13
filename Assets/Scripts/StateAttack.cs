@@ -65,7 +65,7 @@ namespace Mtaka
             {
                 // 透過插值更新角度
                 transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, turnSpeed * Time.deltaTime);
-                yield return turnInterval;
+                yield return waitTurnInterval;
             }
         }
     }

@@ -42,7 +42,7 @@ namespace Mtaka
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!isDead) return;
+            if (isDead) return;
             // 碰撞後嘗試抓取碰撞物的AttackArea元件
             if(other.TryGetComponent(out AttackArea attackArea))
             {

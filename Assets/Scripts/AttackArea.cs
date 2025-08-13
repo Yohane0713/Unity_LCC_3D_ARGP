@@ -1,19 +1,19 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace Mtaka
 {
     /// <summary>
-    /// §ğÀ»°Ï°ì¡G¸I¼²¾¹¤WÄâ±aªº§ğÀ»¤O
+    /// æ”»æ“Šå€åŸŸï¼šç¢°æ’å™¨ä¸Šæ”œå¸¶çš„æ”»æ“ŠåŠ›
     /// </summary>
     public class AttackArea : MonoBehaviour
     {
-        [SerializeField, Header("§ğÀ»¤O"), Range(0, 500)]
+        [SerializeField, Header("æ”»æ“ŠåŠ›"), Range(0, 500)]
         private float attack = 100;
-        [SerializeField, Header("§ğÀ»¯B°Ê"), Range(0, 1)]
+        [SerializeField, Header("æ”»æ“Šæµ®å‹•"), Range(0, 1)]
         private float attackfloat = 0.3f;
 
         /// <summary>
-        /// §ğÀ»¼Æ­È
+        /// æ”»æ“Šæ•¸å€¼
         /// </summary>
         public float attackValue => attack + attack * Random.Range(0, attackfloat);
     }
