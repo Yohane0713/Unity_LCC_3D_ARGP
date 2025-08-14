@@ -32,7 +32,7 @@ namespace Mtaka
 
         public virtual void StateUpdate()
         {
-            LogSystem.Log($"更新{stateName}", "#77f");
+            // LogSystem.Log($"更新{stateName}", "#77f");
         }
     }
 }

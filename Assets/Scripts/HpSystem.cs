@@ -32,7 +32,7 @@ namespace Mtaka
 
         public event EventHandler onDead;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             hp = hpMax;
             waitRedHpShortTime = new WaitForSeconds(redHpShortTime);
@@ -53,6 +53,7 @@ namespace Mtaka
 
         private void Damage(float damage)
         {
+            if (GameManager.gameOver) return;
             float hpOriginal = hp;
             hp -= damage;
             StopAllCoroutines();
@@ -62,7 +63,7 @@ namespace Mtaka
             if (hp <= 0) Dead();
         }
 
-        private void Dead()
+        protected virtual void Dead()
         {
             isDead = true;
             ani.SetTrigger(parDead);
@@ -70,6 +71,9 @@ namespace Mtaka
             LogSystem.Log($"{name}受傷，死亡", "#f12");
         }
 
+        /// <summary>
+        /// 扣血後紅血縮減效果協程
+        /// </summary>
         private IEnumerator RedHpShortEffect(float hpOriginal)
         {
             yield return waitRedHpShortDelay;
