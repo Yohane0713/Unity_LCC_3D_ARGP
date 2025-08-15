@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "96143731511",
+    "project_id": "guanyuchen-3d-arpg",
+    "storage_bucket": "guanyuchen-3d-arpg.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96143731511:android:bdc4d8155dea9a67e508b2",
+        "android_client_info": {
+          "package_name": "com.MTaka.UnityARPG"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnPv2C_RsHHc0N-_i78Qx4MPqFif9ejhc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
