@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using StarterAssets;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ namespace Mtaka
         private TMP_Text textTitle;
 
         private WaitForSeconds waitFade = new WaitForSeconds(0.02f);
+        private ThirdPersonController controller;
+        private AttackSystem attackSystem;
 
         private void Awake()
         {
@@ -29,6 +32,30 @@ namespace Mtaka
             textTitle = GameObject.Find("文字_結束標題").GetComponent<TMP_Text>();
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            controller = FindObjectOfType<ThirdPersonController>();
+            attackSystem = FindObjectOfType<AttackSystem>();
+        }
+
+        /// <summary>
+        /// 顯示滑鼠並停止控制
+        /// </summary>
+        public void ShowCursorStopControl()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            controller.enabled = false;
+            attackSystem.enabled = false;
+        }
+
+        /// <summary>
+        /// 隱藏滑鼠並開始控制
+        /// </summary>
+        public void HideCursorStartControl()
+        {
+            Cursor.visible = false;
+            Cursor.lockState= CursorLockMode.Locked;
+            controller.enabled = true;
+            attackSystem.enabled = true;
         }
 
         /// <summary>

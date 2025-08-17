@@ -1,4 +1,5 @@
-﻿ using UnityEngine;
+﻿using Mtaka;
+using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
 #endif

@@ -14,6 +14,7 @@ namespace Mtaka
         private CanvasGroup groupSaveLoad;
         // 等待真實時間，不被時間暫停影響
         private WaitForSecondsRealtime waitFadeInterval = new WaitForSecondsRealtime(0.02f);
+        private bool isPanelOpen;
 
         [SerializeField]
         private DataPlayer player;
@@ -31,6 +32,10 @@ namespace Mtaka
             controller = traPlayer.GetComponent<ThirdPersonController>();
             ani = traPlayer.GetComponent<Animator>();
             groupSaveLoad = GameObject.Find("群組_存讀檔畫面").GetComponent<CanvasGroup>();
+            groupSaveLoad.alpha = 0f;
+            groupSaveLoad.interactable = false;
+            groupSaveLoad.blocksRaycasts = false;
+            isPanelOpen = false;
             btnLoadData = GameObject.Find("按鈕讀取檔案").GetComponent<Button>();
             btnSaveData = GameObject.Find("按鈕儲存檔案").GetComponent<Button>();
             btnLoadData.onClick.AddListener(Load);
@@ -46,10 +51,17 @@ namespace Mtaka
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Time.timeScale = 0; //暫停
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
-                StartCoroutine(Fade());
+                StopAllCoroutines();
+                if (!isPanelOpen)
+                {
+                    Time.timeScale = 0; //暫停
+                    GameManager.Instance.ShowCursorStopControl();
+                    StartCoroutine(Fade());
+                }
+                else
+                {
+                    StartCoroutine(Fadeout());
+                }
             }
         }
 
@@ -63,6 +75,7 @@ namespace Mtaka
 
             groupSaveLoad.interactable = true;
             groupSaveLoad.blocksRaycasts = true;
+            isPanelOpen = true;
         }
 
         private void Load()
@@ -114,8 +127,8 @@ namespace Mtaka
             }
 
             Time.timeScale = 1;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            GameManager.Instance.HideCursorStartControl();
+            isPanelOpen = false;
         }
 
         private IEnumerator SetPlayer()
