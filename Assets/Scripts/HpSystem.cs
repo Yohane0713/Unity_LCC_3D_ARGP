@@ -1,8 +1,6 @@
-﻿using Mtaka;
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.Processors;
 using UnityEngine.UI;
 
 namespace Mtaka
@@ -22,6 +20,10 @@ namespace Mtaka
         private float redHpShortTime = 0.05f;
         [SerializeField, Header("血條紅色縮減延遲"), Range(0, 1)]
         private float redHpShortDelay = 0.5f;
+        [SerializeField, Header("受傷音效")]
+        private AudioClip soundDamage;
+        [SerializeField, Header("死亡音效")]
+        private AudioClip soundDead;
 
         private float hp;
         private WaitForSeconds waitRedHpShortTime;
@@ -54,6 +56,8 @@ namespace Mtaka
         private void Damage(float damage)
         {
             if (GameManager.gameOver) return;
+
+            SoundManager.instance.PlaySound(soundDamage);
             float hpOriginal = hp;
             hp -= damage;
             StopAllCoroutines();
@@ -65,6 +69,7 @@ namespace Mtaka
 
         protected virtual void Dead()
         {
+            SoundManager.instance.PlaySound(soundDead);
             isDead = true;
             ani.SetTrigger(parDead);
             onDead?.Invoke(this, null);

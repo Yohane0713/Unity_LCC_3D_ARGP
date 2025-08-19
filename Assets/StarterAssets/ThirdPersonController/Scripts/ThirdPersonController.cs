@@ -86,7 +86,7 @@ namespace StarterAssets
         private float _targetRotation = 0.0f;
         private float _rotationVelocity;
         private float _verticalVelocity;
-        private float _terminalVelocity = 53.0f;
+        // private float _terminalVelocity = 53.0f;
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -282,7 +282,8 @@ namespace StarterAssets
 
         private void JumpAndGravity()
         {
-            if (Grounded)
+
+            /*if (Grounded)
             {
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
@@ -346,7 +347,7 @@ namespace StarterAssets
             if (_verticalVelocity < _terminalVelocity)
             {
                 _verticalVelocity += Gravity * Time.deltaTime;
-            }
+            }*/
         }
 
         private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
