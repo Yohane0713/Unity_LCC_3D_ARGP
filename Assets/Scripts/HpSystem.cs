@@ -48,8 +48,7 @@ namespace Mtaka
             // 碰撞後嘗試抓取碰撞物的AttackArea元件
             if(other.TryGetComponent(out AttackArea attackArea))
             {
-                float attack = attackArea.attackValue;
-                Damage(attack);
+                Damage(attackArea.attackValue);
             }
         }
 
