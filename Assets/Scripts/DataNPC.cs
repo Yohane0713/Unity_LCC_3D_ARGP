@@ -8,6 +8,8 @@ namespace Mtaka
         [Header("動畫參數")]
         public string[] animatorParameters;
         [Header("Hugging Face要分析的句子")]
-        public string[] sentences; 
+        public string[] sentences;
+        [Header("音效")]
+        public AudioClip[] sounds;
     }
 }

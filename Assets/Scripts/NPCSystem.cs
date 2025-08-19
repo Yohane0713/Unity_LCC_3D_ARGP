@@ -52,7 +52,7 @@ namespace Mtaka
         public void PlayAnimation(int index)
         {
             ani.SetTrigger(data.animatorParameters[index]);
-
+            SoundManager.instance.PlaySound(data.sounds[index]);
             if (index == 3) StartCoroutine(ShowDialogue());
         }
 
