@@ -49,6 +49,8 @@ namespace Mtaka
 
         private void ShowSaveLoad()
         {
+            if (GameManager.gameOver) return;
+
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 StopAllCoroutines();

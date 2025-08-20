@@ -78,8 +78,8 @@ namespace Mtaka
             ani.applyRootMotion = false;
             // 等待 中斷連段時間後 將連段數歸零
             yield return waitBreakComboTime;
-            attackCountCurrent = 0;
             Debug.Log($"<color=#f33>中斷攻擊，連段數：{attackCountCurrent}</color>");
+            attackCountCurrent = 0;     
         }
     }
 }

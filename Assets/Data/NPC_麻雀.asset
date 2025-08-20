@@ -24,3 +24,9 @@ MonoBehaviour:
   - "\u5403\u6771\u897F, \u9935\u98DF, \u98FC\u6599, \u98DF\u7269, \u9EB5\u5305"
   - "\u5C55\u958B\u7FC5\u8180, \u98DB, \u98DB\u8D77\u4F86"
   - "\u8868\u6F14\u7279\u6280, \u653E\u6280\u80FD"
+  sounds:
+  - {fileID: 8300000, guid: 74c01a3cb98d41e46b260e862aeec4bd, type: 3}
+  - {fileID: 8300000, guid: 822453867d5c9494db58a809dce1fb9c, type: 3}
+  - {fileID: 8300000, guid: d37c45fbaccbfc14eb5958600f79fa1d, type: 3}
+  - {fileID: 8300000, guid: 5393fa68b32bb5a438691e459d1f4168, type: 3}
+  - {fileID: 8300000, guid: e73274329bd851440832847addec5e24, type: 3}

@@ -1,7 +1,9 @@
 ﻿using StarterAssets;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Mtaka
 {
@@ -17,13 +19,15 @@ namespace Mtaka
             }
         }
         public static bool gameOver;
+        [SerializeField] private string playerActionMap = "Player";
+        [SerializeField] private string uiActionMap = "UI";
 
         private CanvasGroup groupGameOver;
         private TMP_Text textTitle;
-
         private WaitForSeconds waitFade = new WaitForSeconds(0.02f);
         private ThirdPersonController controller;
         private AttackSystem attackSystem;
+        private PlayerInput playerInput;
 
         private void Awake()
         {
@@ -34,6 +38,12 @@ namespace Mtaka
             Cursor.lockState = CursorLockMode.Locked;
             controller = FindObjectOfType<ThirdPersonController>();
             attackSystem = FindObjectOfType<AttackSystem>();
+            playerInput = FindObjectOfType<PlayerInput>();
+            if (playerInput && playerInput.actions && playerInput.actions.FindActionMap(uiActionMap, false) == null)
+            {
+                Debug.LogWarning($"[GameManager]找不到UI Map'{uiActionMap}'，可用的Maps： " +
+                                 string.Join(", ", playerInput.actions.actionMaps.Select(m => m.name)));
+            }
         }
 
         /// <summary>
@@ -45,6 +55,7 @@ namespace Mtaka
             Cursor.lockState = CursorLockMode.Confined;
             controller.enabled = false;
             attackSystem.enabled = false;
+            if (playerInput != null) playerInput.SwitchCurrentActionMap("UI");
         }
 
         /// <summary>
@@ -56,6 +67,7 @@ namespace Mtaka
             Cursor.lockState= CursorLockMode.Locked;
             controller.enabled = true;
             attackSystem.enabled = true;
+            if (playerInput != null) playerInput.SwitchCurrentActionMap("Player");
         }
 
         /// <summary>

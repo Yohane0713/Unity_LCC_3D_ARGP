@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using StarterAssets;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,6 @@ namespace Mtaka
         private AudioSource bgmSource;
         private bool playerIn;
         private bool isInteractableStart;
-        private bool handlingSubmit;
         private Animator ani;
         private string dialogue = "這座森林有一隻瘋狂的牛頭人，害我沒辦法安心住在這裡，你可以幫我處理牠嗎？";
 
@@ -102,7 +102,22 @@ namespace Mtaka
             LogSystem.Log(message, "#f36");
             inputMessage = message;
             HuggingFaceManager.instance.StartGetSimilarity();
-            CloseInteractable(keepControlBlocked: false);
+            CloseInteractable(keepControlBlocked: true);
+            StartCoroutine(ReturnControlNextFrame());
+        }
+
+        private IEnumerator ReturnControlNextFrame()
+        {
+            yield return null; // 等待一幀吃掉對話Enter輸入
+            // 清空 StarterAssets 的輸入狀態，避免誤觸跳躍
+            var inputs = FindObjectOfType<StarterAssetsInputs>();
+            if (inputs)
+            {
+                inputs.jump = false;
+                inputs.move = Vector2.zero;
+                inputs.sprint = false;
+            }
+            GameManager.Instance.HideCursorStartControl();
         }
 
         private void PlayerInputAndShowUI()
