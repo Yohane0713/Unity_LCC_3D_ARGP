@@ -19,7 +19,6 @@ namespace Mtaka
             }
         }
         public static bool gameOver;
-        [SerializeField] private string playerActionMap = "Player";
         [SerializeField] private string uiActionMap = "UI";
 
         private CanvasGroup groupGameOver;
